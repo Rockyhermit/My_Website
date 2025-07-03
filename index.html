@@ -306,7 +306,56 @@
 .contact-link:hover i {
     transform: scale(1.1);
 }
+/* Typewriter effect for desktop */
+.typewriter-desktop {
+  overflow: hidden;
+  border-right: 3px solid var(--accent);
+  white-space: nowrap;
+  margin: 0 auto;
+  display: inline-block;
+  animation: typing 3.5s steps(40, end), blink 0.75s step-end infinite;
+}
 
+/* Mobile version (hidden by default) */
+.typewriter-mobile {
+  display: none;
+}
+
+/* Hero subtitle base styles */
+.hero-subtitle {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--text-light);
+  min-height: 60px; /* Prevents layout shift */
+}
+
+/* Mobile responsive rules */
+@media (max-width: 768px) {
+  .hero-subtitle {
+    font-size: 1.5rem;
+    min-height: auto;
+  }
+  
+  .typewriter-desktop {
+    display: none;
+  }
+  
+  .typewriter-mobile {
+    display: inline;
+  }
+}
+
+/* Existing animations (keep these) */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--accent); }
+}
 /* Typewriter effect */
 .typewriter {
     overflow: hidden;
@@ -339,13 +388,7 @@
     .hero-contact {
         justify-content: center;
     }
-    .typewriter {
-    font-size: 1.25rem !important;
-    white-space: normal !important;
-    border-right: none !important;
-    animation: none !important;
-}
-
+    
 }
 
         /* Enhanced Grid */
@@ -1015,7 +1058,11 @@
             </div>
             <div class="hero-text">
                 <h1 class="fade-in">Hi, I'm <span class="accent">Pratheek Tirunagari</span></h1>
-                <h2 class="typewriter fade-in">Full-stack engineer & Data analyst</h2>
+                <!-- With this: -->
+                <h2 class="hero-subtitle fade-in">
+                <span class="typewriter-desktop">Full-stack engineer & Data analyst</span>
+                <span class="typewriter-mobile">Full-stack & Data engineer</span>
+                </h2>
                 <p class="fade-in">I build data-driven web apps fueled by coffee, curry, and a passion for coding & machine learning.</p>
                 
                 <!-- Contact Links -->
